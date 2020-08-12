@@ -20,6 +20,11 @@ function filterByQuery(query, notesObj) {
   }
   return filterResults;
 }
+// select a single note
+function findByTitle(title, notesObj) {
+  const result = notesObj.filter((notes) => notes.title === title)[0];
+  return result;
+}
 // add the route to db.json
 app.get("/api/notes", (req, res) => {
   let results = notes;
@@ -27,4 +32,13 @@ app.get("/api/notes", (req, res) => {
     results = filterByQuery(req.query, results);
   }
   res.json(results);
+});
+// handle requests for a specific notes
+app.get("/api/notes/:title", (req, res) => {
+  const result = findByTitle(req.params.title, notes);
+  if (result) {
+    res.json(result);
+  } else {
+    res.send(404);
+  }
 });
