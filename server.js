@@ -42,3 +42,5 @@ app.get("/api/notes/:title", (req, res) => {
     res.send(404);
   }
 });
+// define route that listens for user's post requests
+app.post("/api/notes", (req, res) => {});
