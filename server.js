@@ -2,11 +2,13 @@
 const { notes } = require("./db/db.json");
 // loal express package
 const express = require("express");
+// set up port for both localhost and heroku
+const PORT = process.env.PORT || 3002;
 // instanitate the server
 const app = express();
 // make our server listen
-app.listen(3002, () => {
-  console.log(`API server now on port 3002!`);
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
 });
 // select by filter with parameter
 function filterByQuery(query, notesObj) {
