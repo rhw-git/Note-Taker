@@ -4,11 +4,22 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "epxress": "0.0.1-security",
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhw-git/Note-Taker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/rhw-git/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/rhw-git/Note-Taker#readme"
 }
