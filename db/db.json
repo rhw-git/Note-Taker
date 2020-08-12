@@ -1,6 +1,19 @@
 {
   "notes": [
-    { "title": "TBRC meeting notes", "text": "Test text", "id": "0" },
-    { "title": "bootcamp class notes -01", "text": "Test text", "id": "1" }
+    {
+      "title": "TBRC meeting notes",
+      "text": "Test text",
+      "id": "0"
+    },
+    {
+      "title": "bootcamp class notes -01",
+      "text": "Test text",
+      "id": "1"
+    },
+    {
+      "title": "moving plan",
+      "text": "Test text",
+      "id": "2"
+    }
   ]
 }

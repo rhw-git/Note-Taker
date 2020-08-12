@@ -1,3 +1,7 @@
+// import fs library
+const fs = require("fs");
+// import path library
+const path = require("path");
 // link to the db.json
 const { notes } = require("./db/db.json");
 // loal express package
@@ -29,6 +33,25 @@ function findByTitle(title, notesObj) {
   const result = notesObj.filter((notes) => notes.title === title)[0];
   return result;
 }
+function createNewNote(body, notesArray) {
+  const note = body;
+  notesArray.push(note);
+  fs.writeFileSync(
+    path.join(__dirname, "./db/db.json"),
+    JSON.stringify({ notes: notesArray }, null, 2)
+  );
+  return note;
+}
+// validate user input
+function validateNote(note) {
+  if (!note.title || typeof note.title !== "string") {
+    return false;
+  }
+  if (!note.text || typeof note.text !== "string") {
+    return false;
+  }
+  return true;
+}
 // add the route to db.json
 app.get("/api/notes", (req, res) => {
   let results = notes;
@@ -49,6 +72,13 @@ app.get("/api/notes/:title", (req, res) => {
 // define route that listens for user's post requests
 app.post("/api/notes", (req, res) => {
   //req.body is where our incoming content will be
-  console.log(req.body);
-  res.json(req.body);
+  // set id based on what the next index of the arry will be
+  req.body.id = notes.length.toString();
+  // validate and store user input
+  if (!validateNote(req.body)) {
+    res.status(400).send(`The new note is not properly formatted`);
+  } else {
+    const note = createNewNote(req.body, notes);
+    res.json(note);
+  }
 });
