@@ -6,6 +6,10 @@ const express = require("express");
 const PORT = process.env.PORT || 3002;
 // instanitate the server
 const app = express();
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
 // make our server listen
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
@@ -43,4 +47,8 @@ app.get("/api/notes/:title", (req, res) => {
   }
 });
 // define route that listens for user's post requests
-app.post("/api/notes", (req, res) => {});
+app.post("/api/notes", (req, res) => {
+  //req.body is where our incoming content will be
+  console.log(req.body);
+  res.json(req.body);
+});
