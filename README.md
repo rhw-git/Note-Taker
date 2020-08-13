@@ -18,7 +18,7 @@ MIT
 
 ## Screenshot
 
-![](assets/img/screenshot.png)
+![](public/assets/img/note-taker_screenshot.png)
 
 ## GitHub
 
