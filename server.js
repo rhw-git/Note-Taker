@@ -14,6 +14,16 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
+// route to all the link css and js file
+app.use(express.static("public"));
+// route to index html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+// route to index html
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
 // make our server listen
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
