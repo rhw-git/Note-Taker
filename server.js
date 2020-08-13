@@ -3,7 +3,7 @@ const fs = require("fs");
 // import path library
 const path = require("path");
 // link to the db.json
-const { notes } = require("./db/db.json");
+let { notes } = require("./db/db.json");
 // loal express package
 const express = require("express");
 // set up port for both localhost and heroku
@@ -41,6 +41,10 @@ function filterByQuery(query, notesObj) {
 // select a single note
 function findByTitle(title, notesObj) {
   const result = notesObj.filter((notes) => notes.title === title)[0];
+  return result;
+}
+function findById(id, notesObj) {
+  const result = notesObj.filter((notes) => notes.id === id)[0];
   return result;
 }
 function createNewNote(body, notesArray) {
@@ -90,5 +94,22 @@ app.post("/api/notes", (req, res) => {
   } else {
     const note = createNewNote(req.body, notes);
     res.json(note);
+  }
+});
+// define route that listens for user's delete requests
+app.delete("/api/notes/:id", (req, res) => {
+  // test for the delete api connection
+  // res.send("Got a delte request at user");
+  const requestDeleteId = req.params.id;
+  let deleteNote = findById(requestDeleteId, notes);
+  const index = notes.indexOf(deleteNote);
+  if (index) {
+    notes.splice(index, 1);
+    notes.forEach((note) => {
+      note.id = notes.indexOf(note).toString();
+    });
+    res.json(notes);
+  } else {
+    res.send(404);
   }
 });
