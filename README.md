@@ -18,6 +18,8 @@ MIT
 
 ## Screenshot
 
+![](assets/img/screenshot.png)
+
 ## GitHub
 
 My GitHub link: (https://github.com/rhw-git/Note-Taker)
