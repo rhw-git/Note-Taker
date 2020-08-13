@@ -8,6 +8,7 @@ const {
 } = require("../lib/notes");
 const { notes } = require("../db/db.json");
 
+jest.mock("fs");
 test("filterByQuery", () => {
   const startingNotes = [
     {
