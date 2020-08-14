@@ -6,7 +6,7 @@ Write and save notes on server
 
 ## Contribution
 
-Made with ❤️ by Ruohan basing on HTML & CSS template from
+Made with ❤️ by Ruohan basing on HTML & CSS template from Xander Rapstine
 
 ## License
 
